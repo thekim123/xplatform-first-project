@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="Hello" classname="Hello" inheritanceid="" position="absolute 0 0 800 768" titletext="헬로화면">
+    <Layouts>
+      <Layout>
+        <FileUpload id="FileUpload00" taborder="0" retry="0" index="0" position2="absolute l:47 w:330 t:69 h:43" positiontype="position2"/>
+        <Button id="Button00" taborder="1" text="글로벌" position2="absolute l:520 w:171 t:45 h:93" positiontype="position2" onclick="Button00_onclick"/>
+        <Button id="Button01" taborder="2" text="Button01" position2="absolute r:299 w:236 t:168 b:503" positiontype="position2" onclick="Button01_onclick"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript4.0"><![CDATA[
+function Button00_onclick(obj:Button,  e:ClickEventInfo)
+{
+	trace(gv_id);
+	
+	gv_id="테스트";
+	
+}
+
+function Button01_onclick(obj:Button,  e:ClickEventInfo)
+{
+	// text get
+	trace(obj.text);
+	// set
+	obj.text = " hello";
+	obj.style.background = "skyblue";
+}
+]]></Script>
+  </Form>
+</FDL>

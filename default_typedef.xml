@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <TypeDefinition>
   <Components>
     <Component type="Bin" id="Div" classname="Div" module="XComCmp" version="1000"/>
@@ -31,10 +31,13 @@
     <Component type="Bin" id="Dataset" classname="Dataset" module="XPlatformLib" version="1000"/>
     <Component type="Bin" id="FilteredDataset" classname="FilteredDataset" module="XClassLib" version="1000"/>
     <Component type="Bin" id="FileDialog" classname="FileDialog" module="XComCmp" version="1000"/>
-	<Component type="Bin" id="GraphicPath" classname="GraphicPath" module="XComCmp" version="1000"/>
-	<Component type="Bin" id="VirtualFile" classname="VirtualFile" module="XComCmp" version="1000"/>
+    <Component type="Bin" id="GraphicPath" classname="GraphicPath" module="XComCmp" version="1000"/>
+    <Component type="Bin" id="VirtualFile" classname="VirtualFile" module="XComCmp" version="1000"/>
+    <Component type="Bin" id="FileUpload" classname="FileUpload" module="XComCmp922" version="1000"/>
   </Components>
   <Services>
-    <Service prefixid="Base" type="form" url="./Base/" cachelevel="" codepage="" language="" version="" communicationversion=""/>
+    <Service prefixid="Base" type="form" url="./Base/" communicationversion="0"/>
+    <Service prefixid="Work" type="form" url="./Work/" communicationversion="0"/>
   </Services>
+  <Update/>
 </TypeDefinition>

@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="Employees" classname="Employees" inheritanceid="" position="absolute 0 0 800 600" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Static id="Static00" text="사원관리" position2="absolute l:17 w:119 t:24 h:47" positiontype="position2"/>
+        <Button id="Button00" taborder="0" text="조회" position2="absolute l:130 w:99 t:17 h:46" positiontype="position2"/>
+        <Button id="Button01" taborder="2" text="추가" position2="absolute l:243 w:99 t:17 h:46" positiontype="position2" onclick="Button01_onclick"/>
+        <Button id="Button02" taborder="3" text="삭제" position2="absolute l:356 w:99 t:17 h:46" positiontype="position2" onclick="Button02_onclick"/>
+        <Button id="Button03" taborder="1" text="저장" position2="absolute l:469 w:99 t:17 h:46" positiontype="position2"/>
+        <Grid id="Grid00" taborder="4" useinputpanel="false" position2="absolute l:8 w:403 t:88 h:488" positiontype="position2" binddataset="ds_emp" autoenter="select" oncellclick="Grid00_oncellclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="40"/>
+                <Column size="60"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="40"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="No"/>
+                <Cell col="1" displaytype="normal" text="GENDER"/>
+                <Cell col="2" displaytype="normal" text="MARRIED"/>
+                <Cell col="3" displaytype="normal" text="SALARY"/>
+                <Cell col="4"/>
+                <Cell col="5" displaytype="normal" text="EMPL_ID"/>
+                <Cell col="6" displaytype="normal" text="FULL_NAME"/>
+                <Cell col="7" displaytype="normal" text="DEPT_ID"/>
+                <Cell col="8" displaytype="normal" text="HIRE_DATE"/>
+                <Cell col="9" displaytype="normal" text="EMPL_MEMO"/>
+              </Band>
+              <Band id="body">
+                <Cell text="expr:currow+1"/>
+                <Cell col="1" displaytype="normal" style="background:EXPR(GENDER==&quot;W&quot;?&quot;red&quot;:(GENDER==&quot;E&quot;?&quot;yellow&quot;:&quot;blue&quot;));background2:EXPR(GENDER==&quot;W&quot;?&quot;red&quot;:(GENDER==&quot;E&quot;?&quot;yellow&quot;:&quot;blue&quot;));" text="expr:GENDER==&quot;W&quot;?&quot;여성&quot;:(GENDER==&quot;E&quot;?&quot;기타&quot;:&quot;남성&quot;)"/>
+                <Cell col="2" displaytype="normal" text="bind:MARRIED"/>
+                <Cell col="3" displaytype="normal" text="bind:SALARY"/>
+                <Cell col="4" text="expr:fn_count(currow)"/>
+                <Cell col="5" colspan="2" displaytype="normal" text="expr:EMPL_ID+&quot;::::&quot; +FULL_NAME" taborder="undefined"/>
+                <Cell col="7" displaytype="combo" edittype="combo" text="bind:DEPT_ID" combodataset="ds_dept" combocodecol="cd" combodatacol="txt" combodisplay="display"/>
+                <Cell col="8" displaytype="date" edittype="date" text="bind:HIRE_DATE" calendardisplay="display"/>
+                <Cell col="9" displaytype="normal" text="bind:EMPL_MEMO"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="Div00" taborder="5" position2="absolute l:424 w:340 t:85 h:491" positiontype="position2" text="Div00">
+          <Layouts>
+            <Layout>
+              <Edit id="Edit00" taborder="0" position2="absolute l:173 w:120 t:44 h:30" oneditclick="Div00_Edit00_oneditclick" positiontype="position2" password="true"/>
+              <MaskEdit id="MaskEdit00" taborder="1" position2="absolute l:173 w:120 t:92 h:30" positiontype="position2" oneditclick="Div00_MaskEdit00_oneditclick" type="string" mask="AA-###" maskchar=" "/>
+              <MaskEdit id="MaskEdit01" taborder="2" position2="absolute l:173 w:120 t:157 h:30" positiontype="position2" mask="#,###"/>
+              <Radio id="Radio00" taborder="3" columncount="3" rowcount="0" position2="absolute l:173 w:120 t:269 h:30" positiontype="position2" onitemclick="Div00_Radio00_onitemclick" codecolumn="codecolumn" datacolumn="datacolumn">
+                <Dataset id="innerdataset">
+                  <ColumnInfo>
+                    <Column id="codecolumn" size="256"/>
+                    <Column id="datacolumn" size="256"/>
+                  </ColumnInfo>
+                  <Rows>
+                    <Row>
+                      <Col id="codecolumn">M</Col>
+                      <Col id="datacolumn">여성</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">W</Col>
+                      <Col id="datacolumn">남성</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">E</Col>
+                      <Col id="datacolumn">기타</Col>
+                    </Row>
+                  </Rows>
+                </Dataset>
+              </Radio>
+              <CheckBox id="CheckBox00" taborder="4" text="CheckBox00" position2="absolute l:173 w:18 t:208 h:30" positiontype="position2" onclick="Div00_CheckBox00_onclick" truevalue="1" falsevalue="0"/>
+              <Calendar id="Calendar00" taborder="5" position2="absolute l:165 w:120 t:328 h:30" positiontype="position2" editformat="yyyyMMdd" dateformat="yyyy.MM.dd" value="null"/>
+              <Combo id="Combo00" taborder="6" text="Combo00" position2="absolute l:167 w:120 t:385 h:30" positiontype="position2" innerdataset="@ds_dept" codecolumn="cd" datacolumn="txt"/>
+              <Static id="Static01" text="이름" position2="absolute l:27 w:120 t:43 h:30" style="background:#00800058;" positiontype="position2"/>
+              <Static id="Static02" text="사번" position2="absolute l:27 w:120 t:100 h:30" style="background:#00800058;" onclick="Static02_onclick" positiontype="position2"/>
+              <Static id="Static03" text="연봉" position2="absolute l:27 w:120 t:157 h:30" style="background:#00800058;" positiontype="position2"/>
+              <Static id="Static04" text="결혼여부" position2="absolute l:27 w:120 t:214 h:30" style="background:#00800058;" positiontype="position2"/>
+              <Static id="Static05" text="남여구분" position2="absolute l:27 w:120 t:271 h:30" style="background:#00800058;" positiontype="position2"/>
+              <Static id="Static06" text="입사일" position2="absolute l:27 w:120 t:328 h:30" style="background:#00800058;" positiontype="position2"/>
+              <Static id="Static07" text="부서" position2="absolute l:27 w:120 t:385 h:30" style="background:#00800058;" positiontype="position2"/>
+              <Static id="Static08" text="메모" position2="absolute l:27 w:120 t:441 h:30" style="background:#00800058;" positiontype="position2"/>
+              <TextArea id="TextArea00" taborder="6" position2="absolute l:169 w:120 t:443 h:30" positiontype="position2" oneditclick="Div00_TextArea00_oneditclick"/>
+              <Calendar id="Calendar01" taborder="7" position2="absolute l:191 w:120 t:208 h:30" positiontype="position2" oneditclick="Div00_Calendar01_oneditclick"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_emp" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="EMPL_ID" type="STRING" size="5"/>
+          <Column id="FULL_NAME" type="STRING" size="10"/>
+          <Column id="DEPT_ID" type="STRING" size="2"/>
+          <Column id="HIRE_DATE" type="DATE" size="8"/>
+          <Column id="GENDER" type="STRING" size="1"/>
+          <Column id="MARRIED" type="STRING" size="1"/>
+          <Column id="SALARY" type="BIGDECIMAL" size="10"/>
+          <Column id="EMPL_MEMO" type="STRING" size="500"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="EMPL_ID">AA001</Col>
+            <Col id="FULL_NAME">ShinSoo Choo</Col>
+            <Col id="DEPT_ID">01</Col>
+            <Col id="HIRE_DATE">20011104</Col>
+            <Col id="GENDER">M</Col>
+            <Col id="MARRIED">1</Col>
+            <Col id="SALARY">2000</Col>
+            <Col id="EMPL_MEMO">red</Col>
+          </Row>
+          <Row>
+            <Col id="EMPL_ID">BB001</Col>
+            <Col id="FULL_NAME">Yuna Kim</Col>
+            <Col id="DEPT_ID">02</Col>
+            <Col id="HIRE_DATE">20050305</Col>
+            <Col id="GENDER">W</Col>
+            <Col id="MARRIED">0</Col>
+            <Col id="SALARY">3000</Col>
+            <Col id="EMPL_MEMO">green</Col>
+          </Row>
+          <Row>
+            <Col id="FULL_NAME">Sumi Jo</Col>
+            <Col id="EMPL_ID">CC001</Col>
+            <Col id="DEPT_ID">03</Col>
+            <Col id="HIRE_DATE">20100506</Col>
+            <Col id="GENDER">W</Col>
+            <Col id="MARRIED">0</Col>
+            <Col id="SALARY">5000</Col>
+            <Col id="EMPL_MEMO">blue</Col>
+          </Row>
+          <Row>
+            <Col id="EMPL_ID">DD001</Col>
+            <Col id="FULL_NAME">JS Park</Col>
+            <Col id="DEPT_ID">04</Col>
+            <Col id="HIRE_DATE">20101123</Col>
+            <Col id="GENDER">M</Col>
+            <Col id="MARRIED">0</Col>
+            <Col id="SALARY">3500</Col>
+            <Col id="EMPL_MEMO">yellow</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_dept" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="txt" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cd">01</Col>
+            <Col id="txt">개발</Col>
+          </Row>
+          <Row>
+            <Col id="cd">02</Col>
+            <Col id="txt">운영</Col>
+          </Row>
+          <Row>
+            <Col id="cd">03</Col>
+            <Col id="txt">교육</Col>
+          </Row>
+          <Row>
+            <Col id="cd">04</Col>
+            <Col id="txt">판매</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="Dataset00" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false"/>
+    </Objects>
+    <Bind>
+      <BindItem id="item1" compid="Div00.MaskEdit01" propid="value" datasetid="ds_emp" columnid="SALARY"/>
+      <BindItem id="item3" compid="Div00.CheckBox00" propid="value" datasetid="ds_emp" columnid="MARRIED"/>
+      <BindItem id="item5" compid="Div00.Radio00" propid="value" datasetid="ds_emp" columnid="GENDER"/>
+      <BindItem id="item6" compid="Div00.Calendar00" propid="value" datasetid="ds_emp" columnid="HIRE_DATE"/>
+      <BindItem id="item7" compid="Div00.Combo00" propid="value" datasetid="ds_emp" columnid="DEPT_ID"/>
+      <BindItem id="item8" compid="Div00.TextArea00" propid="background" datasetid="ds_emp" columnid="EMPL_MEMO"/>
+      <BindItem id="item0" compid="Div00.Edit00" propid="value" datasetid="ds_emp" columnid="FULL_NAME"/>
+      <BindItem id="item2" compid="Div00.MaskEdit00" propid="value" datasetid="ds_emp" columnid="EMPL_ID"/>
+      <BindItem id="item4" compid="Div00.Calendar01" propid="value" datasetid="ds_emp" columnid="HIRE_DATE"/>
+      <BindItem id="item9" compid="Div00.Calendar01" propid="visible" datasetid="ds_emp" columnid="MARRIED"/>
+    </Bind>
+    <Script type="xscript4.0"><![CDATA[function Grid00_oncellclick(obj:Grid, e:GridClickEventInfo)
+{
+	obj.dropdownCalendar();
+	obj.dropdownCombo();
+}
+
+function Button01_onclick(obj:Button,  e:ClickEventInfo)
+{
+	ds_emp.addRow();
+}
+
+function Button02_onclick(obj:Button,  e:ClickEventInfo, currow)
+{
+	ds_emp.deleteRow(currow);
+}
+
+function fn_count(currow)
+{
+	return currow;
+}
+
+//삼항 연산자 ABC
+]]></Script>
+  </Form>
+</FDL>
