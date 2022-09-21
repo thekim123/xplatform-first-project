@@ -36,8 +36,9 @@
     <Component type="Bin" id="FileUpload" classname="FileUpload" module="XComCmp922" version="1000"/>
   </Components>
   <Services>
-    <Service prefixid="Base" type="form" url="./Base/" communicationversion="0"/>
-    <Service prefixid="Work" type="form" url="./Work/" communicationversion="0"/>
+    <Service prefixid="Base" type="form" url="./Base/" communicationversion="0" cachelevel="dynamic"/>
+    <Service prefixid="Work" type="form" url="./Work/" communicationversion="0" cachelevel="session"/>
+    <Service prefixid="dataurl" type="JSP" url="http://localhost:8080/" cachelevel="none" communicationversion="0"/>
   </Services>
   <Update/>
 </TypeDefinition>
